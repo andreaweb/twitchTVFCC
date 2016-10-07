@@ -1,0 +1,99 @@
+body{
+  color: #ccc;
+  background-color: #111;
+  max-width: 960px;
+  margin: 0 auto;
+  font-family: sans-serif;
+}
+h1{
+  font-family: 'Bungee Inline', cursive;
+  line-height: 1em
+}
+a{
+  text-decoration: none;
+  color: #FFFAC1
+}
+div{
+  width: 33%;
+  float: left;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  margin: 10px 0;
+}
+img{
+  float: left;
+  margin-top: 15px;
+  margin-right: 15px;
+}
+h5, p{
+  display: inline;
+}
+h5{
+  text-transform: uppercase;
+}
+.name{
+  clear: both;
+}
+.game{
+  border: #CCFFA6 dotted 4px;
+  width: 59%;
+}
+.name + .game{
+  width: 66%;
+}
+.off{
+  border: #FFA665 dotted 4px;
+  width: 66%;
+}
+.closed{
+  border:dotted 4px #FF5443;
+  width: 99%;
+}
+/*tablet*/
+@media screen and (max-width: 960px){
+  body{
+    width: 600px;
+  }
+  div{
+    width: 25%;
+  }
+  header{
+     text-align: center;
+  }
+  .off{
+    width: 65%;
+  }
+  .game{
+    width: 54%;
+  }
+  .closed{
+    width: 86%;
+    margin: 10px 25px;
+  }
+}
+/*phone*/
+@media screen and (max-width: 599px){
+  body{
+    max-width: 90%;
+  }
+  img{
+    position: relative;
+    top: -60px;
+    display: inline;
+  }
+  div, .game, .off, .closed{
+    width: 100%;
+  }
+  .name{
+    height: 25px;
+  }
+  .game{
+    margin-top: -50px;
+  }
+  .closed{
+    margin: 10px 0;
+    height: auto;
+    line-height: 2em;
+  }
+}
