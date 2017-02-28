@@ -17,10 +17,10 @@ for (var i = 0; i < users.length; i++){
       })
  
       .done(function(data) {
-          $("body").append("<div class='name'><h5><a href='https://www.twitch.tv/"+users[i]+"' target='_blank'>"+users[i]+"</a></h5></div>");
+          //$("body").append("<div class='name'><h5><a href='https://www.twitch.tv/"+users[i]+"' target='_blank'>"+users[i]+"</a></h5></div>");
          // $.each(data.stream,function(i,item){
             if(data.stream != null){
-                $("body").append("<img src='"+data.stream.channel.logo+"' width='50' height='50'><div class='game'><h5>"+data.stream.game+"</h5></div>");
+                $("body").append("<div class='flex'><img src='"+data.stream.channel.logo+"' width='50' height='50'><div class='game'><h5>"+users[i]+" </h5>"+data.stream.game+"</div></div>");
              }else{
                //UPDATE V5
                 $.getJSON(channelAPI, {
@@ -31,7 +31,7 @@ for (var i = 0; i < users.length; i++){
                  if(data.status == 404){
                     $("body").append("<div class='closed'><h5>"+users[i]+"</h5> Account Closed or Non-existent</div>");
                  }else{
-                    $("body").append("<div class='off'><p>offline</p></div>");
+                    $("body").append("<div class='off'><h5>"+users[i]+"</h5> <p>offline</p></div>");
                  }
                })(i);
                //END UPDATE V5
