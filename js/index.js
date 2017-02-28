@@ -5,9 +5,15 @@ for (var i = 0; i < users.length; i++){
    (function(i) {
      
      var mediaAPI = "https://api.twitch.tv/kraken/streams/"+users[i]+"?callback=";
-      
+     //UPDATE V5
+     var channelAPI = "https://api.twitch.tv/kraken/channels/"+users[i]+"?callback=";
+     var clientID = 'rjppwqszy4rcrkev4sknawhjzmb5wl';
+     //END UPDATE V5
+     
       $.getJSON(mediaAPI, {
-
+        //UPDATE V5
+              'client_id':clientID
+        //END UPDATE V5
       })
  
       .done(function(data) {
@@ -16,10 +22,20 @@ for (var i = 0; i < users.length; i++){
             if(data.stream != null){
                 $("body").append("<img src='"+data.stream.channel.logo+"' width='50' height='50'><div class='game'><h5>"+data.stream.game+"</h5></div>");
              }else{
-                $("body").append("<div class='off'><p>offline</p></div>");
+               //UPDATE V5
+                $.getJSON(channelAPI, {
+                   'client_id':clientID
+                })
+               .done(function(data) {
+                 //get data from channel API
+                 if(data.status == 404){
+                    $("body").append("<div class='closed'><h5>"+users[i]+"</h5> Account Closed or Non-existent</div>");
+                 }else{
+                    $("body").append("<div class='off'><p>offline</p></div>");
+                 }
+               })(i);
+               //END UPDATE V5
              }       
-        }).fail(function(d) {
-             $("body").append("<div class='closed'><h5>"+users[i]+"</h5> Account Closed or Non-existent</div>");
         });
   })(i);
 }
